@@ -11,17 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::resource('/', 'Front\PostController');
+Route::resource('posts', 'FrontPostController', ['only' => ['index', 'show']]);
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::resources([
-    'posts', 'PostController',
-    'categories', 'CategoryController',
-    'tags', 'TagController'
-]);
+Route::resource('/backs/posts', 'PostController');
